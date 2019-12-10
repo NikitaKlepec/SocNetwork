@@ -7,7 +7,11 @@
     margin: 0 auto;
 }
 
+.body{
+    background-image: url("./Images/1.jpg");
+    }
 
-
-
-
+.app-wrapper-content{
+    grid-area: c;
+    background-color: green;
+}

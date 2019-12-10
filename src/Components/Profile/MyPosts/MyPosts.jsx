@@ -2,9 +2,12 @@ import React from 'react';
 import mod from './MyPosts.module.css';
 import Post from "./Post/Post";
 
-function MyPosts() {
-    return (
+function MyPosts(props) {
+   let postElements=props.posts.map(message=>
+    <Post message={message.message} like={message.like} dislike={message.dislike}/>
+)
 
+    return (
                 <div>
                     MyPosts
                     <div>
@@ -12,9 +15,7 @@ function MyPosts() {
                         <button> add Post </button>
                     </div>
                     <div className={mod.posts}>
-                    <Post message='How du yoy du' like='30' dislike='2'/>
-                    <Post message='My Name Ivan' like='25' dislike='4'/>
-                    <Post message='Tru' like='45' dislike='1'/>
+                        {postElements}
                     </div>
                 </div>
 
