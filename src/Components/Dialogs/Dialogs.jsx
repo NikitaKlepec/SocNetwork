@@ -4,20 +4,13 @@ import DialogItem from "./DilogItem/DialogItem";
 import Message from "./Message/Message";
 
 function Dialogs(props) {
-    // let dialogsData = [
-    //     {id: 1, name: "Oleg"},
-    //     {id: 2, name: "Kolya"},
-    //     {id: 3, name: "Lera"},
-    //     {id: 4, name: "Sergey"},
-    // ]
-    //
-    // let messagesData = [
-    //     {id: 1, message: "Oleg ns Yu"},
-    //     {id: 2, message: "Peter"},
-    //     {id: 3, message: "Linkoln"},
-    //     {id: 4, message: "Dfetbbhdf"},
-    //
-    // ]
+
+    let messagePost=React.createRef();
+
+    let aadMessage=()=>{
+        let message=messagePost.current.value;
+        alert(message)
+    }
 
     let dialogsElements = props.state.dialogs.map(dialog =>
         <DialogItem name={dialog.name} id={dialog.id}/>
@@ -36,6 +29,10 @@ function Dialogs(props) {
             </div>
             <div className={mod.messages}>
                 {messagesElements}
+                <textarea ref={messagePost}></textarea>
+                <div>
+                <button onClick={aadMessage}></button>
+                </div>
 
             </div>
 
