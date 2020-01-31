@@ -12,4 +12,7 @@
 
 }
 
-
+.messages button{
+    width: 160px;
+    text-align: center;
+}
