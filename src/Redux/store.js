@@ -59,4 +59,3 @@ export const updateNewMessageTextCreator=(body)=>({type:UPDATE_NEW_MESSAGE_BODY,
 
 
 export default store;
-window.store = store;
