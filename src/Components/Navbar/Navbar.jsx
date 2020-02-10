@@ -12,6 +12,9 @@ function Navbar() {
                 <NavLink to="/dialogs" activeClassName={mod.activeLink}>Messages</NavLink>
             </div>
             <div className={mod.item}>
+                <NavLink to="/users" activeClassName={mod.activeLink}>Users</NavLink>
+            </div>
+            <div className={mod.item}>
                 <NavLink to="/news" activeClassName={mod.activeLink}>News</NavLink>
             </div>
             <div className={mod.item}>
