@@ -1,23 +1,23 @@
 import React from 'react';
-import style from './Users.module.css';
-import * as axios from "axios";
-import userPhoto from '../../Images/AvatarcaAnonim.webp';
+import style from "./Users.module.css";
+import userPhoto from "../../Images/AvatarcaAnonim.webp";
 
-    class Users extends React.Component {
-        constructor(props) {
-            super(props)
-             axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                            this.props.setUsers(response.data.items)
-                        }
-                    )
-                }
+let Users = (props) => {
 
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
+        return <div>
+    <div>
+        {pages.map(p => {
+            return <span className={props.currentPage === p && style.selectedPage}
+                         onClick={(e) => {props.onPageChanged(p)}}>{p}</span>  })}
 
-            render()
-            {
-                return <div>
-                    <button onClick={this.getUsers}>GetUsers</button>
-                    {this.props.users.map(u => <div key={u.id}>
+    </div>
+    {
+        props.users.map(u => <div key={u.id}>
                 <span>
         <div>
             <img src={u.photos.small != null ? u.photos.small : userPhoto} className={style.photo}/>
@@ -25,16 +25,16 @@ import userPhoto from '../../Images/AvatarcaAnonim.webp';
         <div>
             {u.followed ?
                 <button onClick={() => {
-                    this.props.unfollow(u.id)
+                    props.unFollow(u.id)
                 }}>UnFollow</button>
                 : <button onClick={() => {
-                    this.props.follow(u.id)
+                    props.follow(u.id)
                 }}>Follow</button>}
 
         </div>
                 </span>
 
-                        <span>
+            <span>
             <div>
                 {u.name}
                 </div>
@@ -42,16 +42,15 @@ import userPhoto from '../../Images/AvatarcaAnonim.webp';
                 {u.status}
             </div>
         </span>
-                        <span>
+            <span>
                 {"u.location.country"}
             </span>
-                        <span>
+            <span>
                 {"u.location.city"}
             </span>
-                    </div>)}
-                </div>
-            }
-        }
-
+        </div>)
+    }
+</div>
+}
 
 export default Users;
