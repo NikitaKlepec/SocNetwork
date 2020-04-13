@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import {Route} from "react-router-dom";
 import News from "./Components/News/News";
@@ -9,11 +8,12 @@ import Setting from "./Components/Setting/Setting";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UserContainer from "./Components/Users/UserContainer";
 import ProfileContainer from "./Components/Profile/ProfileInfo/ProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 function App() {
     return (
         <div className='app-wrapper'>
-            <Header/>
+            <HeaderContainer/>
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route path='/dialogs'
