@@ -3,6 +3,8 @@ import {sendMessageCreator, updateNewMessageTextCreator} from "../../Redux/messa
 import Dialogs from "./Dialogs";
 import MyPosts from "../Profile/MyPosts/MyPosts";
 import {connect} from "react-redux";
+import {withAuthRedirect} from "../../HOC/withAuthRedirect";
+import {Redirect} from "react-router-dom";
 
 
 // const DialogsContainer = (props) => {
@@ -31,8 +33,7 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
     return {
         messagesPage: state.messagesPage,
-        isAuth:state.auth.isAuth
-    }
+            }
 }
 
 let mapDispatchToProps = (dispatch) => {
@@ -46,6 +47,8 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+let AuthRedirectComponent=withAuthRedirect(Dialogs);
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 export default DialogsContainer;
