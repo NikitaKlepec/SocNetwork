@@ -5,6 +5,7 @@ import MyPosts from "../Profile/MyPosts/MyPosts";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../HOC/withAuthRedirect";
 import {Redirect} from "react-router-dom";
+import {compose} from "redux";
 
 
 // const DialogsContainer = (props) => {
@@ -47,8 +48,4 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let AuthRedirectComponent=withAuthRedirect(Dialogs);
-
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
-
-export default DialogsContainer;
+export default compose(connect(mapStateToProps, mapDispatchToProps),withAuthRedirect)(Dialogs);
