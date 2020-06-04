@@ -8,7 +8,7 @@ const instance=axios.create({
     headers:{"API-KEY":"2c75604d-8690-4dce-af63-4f2e1f4b5f49"}
 })
 
-export const usersApi={
+export const usersAPI={
     getUsers(currentPage = 1, pageSize = 10)  {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => {
@@ -22,7 +22,8 @@ export const usersApi={
         return instance.delete(`follow/${userId}`)
     },
     getProfile(userId){
-        return instance.get(`profile/${userId}`)
+        console.warn('Obsolete method. Please profileApi object')
+        return profileAPI.getProfile(userId)
     }
 }
 
@@ -37,4 +38,16 @@ export const getUsers2 = (currentPage = 1, pageSize = 10) => {
         .then(response => {
             return response.data;
         })
+}
+
+export const profileAPI={
+    getProfile(userId){
+        return instance.get(`profile/${userId}`)
+    },
+    getStatus(userId){
+        return instance.get('profie/status/'+userId);
+    },
+    updateStatus(status){
+        return instance.put('propfile/status',{status:status})
+    }
 }

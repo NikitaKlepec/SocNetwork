@@ -2,7 +2,6 @@ import React from 'react';
 import mod from './Dialogs.module.css';
 import DialogItem from "./DilogItem/DialogItem";
 import Message from "./Message/Message";
-import {sendMessageCreator, updateNewMessageTextCreator} from "../../Redux/messagesRecucer";
 import {Redirect} from "react-router-dom";
 
 
